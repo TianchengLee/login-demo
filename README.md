@@ -53,6 +53,18 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 - **Element-UI   桌面端的UI组件库**
 
+### 登录项目的设计目标 ###
+
+- 掌握技能点:
+
+	+ [x] 项目部署
+	+ [x] 项目管理
+	+ [x] Element-UI的使用
+	+ [x] JWT进行登录状态保持
+	+ [x] 路由导航守卫的使用
+	+ [x] Axios的基础和高级用法
+	
+
 ### 项目部署 ###
 
 1. 使用`vue-cli`脚手架建立项目
@@ -83,7 +95,11 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 		npm i less less-loader sass-loader node-sass -D
 
-3. 使用git/svn来管理代码
+3. 安装项目中额外要用的包
+
+		npm i element-ui axios vuex -S
+
+4. 使用git/svn来管理代码
 
 	在本地初始化仓库
 
@@ -99,4 +115,20 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 		git remote add origin git@github.com:TianchengLee/login-demo.git
 		git push -u origin master
 	
+### 使用Element-UI ###
 
+
+### Axios的使用 ###
+
+> Axios 是一个基于 promise 的 HTTP 库，可以用在浏览器和 node.js 中。
+
+- 特性
+
+	+ 从浏览器中创建 XMLHttpRequests
+	+ 从 node.js 创建 http 请求
+	+ 支持 Promise API
+	+ 拦截请求和响应
+	+ 转换请求数据和响应数据
+	+ 取消请求
+	+ 自动转换 JSON 数据
+	+ 客户端支持防御 XSRF
