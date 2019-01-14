@@ -87,6 +87,8 @@ export default {
         })
         .catch(err => {
           console.dir(err);
+          // this.$message.error('用户身份过期, 请重新登录!')
+          // this.$router.push('/login')
         });
     },
     logout() {

@@ -38,8 +38,15 @@ export default {
         })
         .then(result => {
           // console.log(result);
-          localStorage.setItem("token", result.data.data.token);
-          localStorage.setItem("userInfo", JSON.stringify(result.data.data));
+          let userInfo = result.data.data;
+          // let tokenStr = userInfo.token;
+          // localStorage.setItem("token", tokenStr);
+          // localStorage.setItem("userInfo", JSON.stringify(userInfo));
+          // 将token存储到Vuex的store中
+          // 不推荐, 只要涉及到操作state的数据, 应该都在mutations中定义好操作的方法后再去触发
+          // this.$store.state.token = tokenStr
+          // 提交一个任务给mutations进行执行
+          this.$store.commit("setUserInfoAndToken", userInfo);
           // 登录成功提醒用户
           // alert(result.data.succMsg);
           // 将Token存储到localStorage

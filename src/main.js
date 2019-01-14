@@ -6,6 +6,32 @@ import 'element-ui/lib/theme-chalk/index.css'
 import './styles/common.css'
 Vue.use(ElementUI)
 
+// 导包
+import Vuex from 'vuex'
+
+// 使用Vue安装Vuex(模块化工程必须要做的一件事)
+Vue.use(Vuex)
+
+// 创建store对象
+let store = new Vuex.Store({
+  // 表示仓库的数据
+  state: {
+    token: localStorage.getItem('token'),
+    userInfo: JSON.parse(localStorage.getItem('userInfo') || '{}')
+  },
+  // 用于操作仓库的数据
+  mutations: {
+    setUserInfoAndToken(state, userInfo) {
+      state.token = userInfo.token
+      state.userInfo = userInfo
+      localStorage.setItem("token", userInfo.token);
+      localStorage.setItem("userInfo", JSON.stringify(userInfo));
+    }
+  },
+  // 用于获取仓库的数据(进行简单的处理)
+  getters: {}
+})
+
 import axios from 'axios'
 axios.defaults.baseURL = 'http://litc.pro:9999/v1/'
 
@@ -51,6 +77,10 @@ router.beforeEach((to, from, next) => {
     return next('/login')
   }
 
+  if (token && to.path === '/login') {
+    return next('/home')
+  }
+
   next()
 })
 
@@ -65,5 +95,6 @@ Vue.config.productionTip = false
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App)
 })
